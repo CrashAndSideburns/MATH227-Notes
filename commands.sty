@@ -1,0 +1,24 @@
+\ProvidesPackage{commands}
+
+\usepackage{amsmath} % AMS Math Package
+\usepackage{amssymb}    % Math symbols such as \mathbb
+\usepackage{bm}
+\usepackage{harpoon}
+
+\renewcommand{\vec}[1]{\bm{{\overrightharp{\ensuremath{#1}}}}}
+\renewcommand{\i}{\bm{\hat{\imath}}}
+\renewcommand{\j}{\bm{\hat{\jmath}}}
+\renewcommand{\k}{\bm{\hat{k}}}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+\newtcbtheorem{definition}{Definition}{colback=red!5!, colframe=red!75!black,fonttitle=\bfseries}{}
+\newtcbtheorem{example}{Example}{colback=green!5!white, colframe=green!35!black, fonttitle=\bfseries}{}
+\newtcbtheorem{theorem}{Theorem}{colback=blue!5, colframe=blue!55!black, fonttitle=\bfseries}{}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{2em}

@@ -1,0 +1,123 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+        \section{Curvature}
+        We wish to construct a mathematical way to encode the ``amount" which a given curve curves, so that we may distinguish straighter curves from more tightly winding curves.
+
+        The velocity vector \(\vec{v}\) of a vector valued function \(\vec{r}\) is tangent to the curve which \(\vec{r}\) describes, so this notion of curvature must be related to the rate of change of \(\vec{v}\), as the curvature is highest when the velocity vector changes rapidly. One issue is that parameterizations are generally not unique, but our definition of curvature should be independent of any particular parameterization, and thus an intrinsic property of the curve. To do this, we normalize \(\vec{v}\) to unit length, so that the speed with which we traverse the curve is irrelevant to the curvature.
+        \begin{theorem}{}{}
+                Consider a smooth curve parameterized by \(\vec{r}(t)\). Prove that \(|\vec{r}|=a\) is constant if and only if \(\vec{v}\perp\vec{r}\) for all \(t\).
+                \tcblower
+                \(\vec{r}\cdot\vec{r}=|\vec{r}|^2=a^2\), which is constant if and only if \(\frac{d}{dt}\vec{r}\cdot\vec{r}=0\), but
+                \[
+                \frac{d}{dt}\vec{r}\cdot\vec{r}=\vec{r}'\cdot\vec{r}+\vec{r}\cdot\vec{r}'=\vec{v}\cdot\vec{r}+\vec{r}\cdot\vec{v}=2\vec{v}\cdot\vec{r}
+                \]
+                so \(|\vec{r}(t)|=a\) is constant if and only if \(\vec{v}\cdot\vec{r}=0\), and thus \(\vec{v}\perp\vec{r}\).
+        \end{theorem}
+        \begin{definition}{Unit Tangent Vector}{}
+                Assuming that \(\vec{r}(t)\) is smooth, so that \(\vec{r}'(t)\neq\vec{0}\), we define the \emph{unit tangent vector}
+                \[
+                \vec{T}(t)=\frac{\vec{r}'(t)}{|\vec{r}'(t)|}
+                \]
+                which is always tangent to \(\vec{r}(t)\), and has unit length \(|\vec{T}|=1\), so the unit tangent vector does not depend on parameterization, except for orientation.
+
+                The unit tangent vector may also be defined in terms of the arc length parameterization. By noting that because the arc length parameterization has constant unit speed, we have
+                \[
+                \vec{T}(s)=\frac{\frac{d\vec{r}}{ds}}{\left|\frac{d\vec{r}}{ds}\right|}=\frac{d\vec{r}}{ds}
+                \]
+        \end{definition}
+        \begin{definition}{Curvature}{}
+                We define the \emph{curvature} \(\kappa\) of a curve in terms of the unit tangest vector as
+                \[
+                \kappa = \left| \frac{d\vec{T}}{ds}\right|
+                \]
+                using the arc length parameterization so that the curvature is independent of any particular parameterization.
+        \end{definition}
+        One difficulty with this definition is that it requires us to find the arc length parameterization to solve for the curvature, but finding the arc length parameterization of even simple curves may be difficult or impossible. Therefore, to compute \(\kappa\), we use the chain rule, noting that \(\frac{ds}{dt}=|\vec{r}'(t)|\), so we may compute the curvature of a curve using
+        \[
+        \kappa = \left|\frac{d\vec{T}}{dt}\frac{dt}{ds}\right|=\frac{|\vec{T}'(t)|}{|\vec{r}'(t)|}
+        \]
+        \begin{example}{}{}
+                Consider a straight line parameterized by \(\vec{r}(t)=\vec{r}_0+\vec{v}t\). Show that this curve has \(\kappa=0\).
+                \tcblower
+                First, we find \(\vec{r}'(t)=\vec{v}\), so \(|\vec{r}'(t)|=|\vec{v}|\), which gives us
+                \[
+                \vec{T}=\frac{\vec{v}}{|\vec{v}|}
+                \]
+                but since \(\vec{v}\) is constant, we have
+                \[
+                \vec{T}'=0
+                \]
+                and consequently \(\kappa=0\).
+        \end{example}
+        \begin{example}{}{}
+                Consider a circle parameterized by \(\vec{r}(t)=a\cos(t)\i+a\sin{t}\j\). Find its curvature.
+                \tcblower
+                First, we find
+                \[
+                \vec{r}'(t)=-a\sin{t}\i+a\cos{t}\j
+                \]
+                so
+                \[
+                |\vec{r}'(t)|=\sqrt{a^2\sin^2{t}+a^2\cos^2{t}}=\sqrt{a^2}=a
+                \]
+                which gives us
+                \[
+                \vec{T}(t)=\frac{\vec{r}'(t)}{a}=-\sin{t}\i+\cos{t}\j
+                \]
+                and
+                \[
+                \vec{T}'(t)=-\cos{t}\i-\sin{t}\j
+                \]
+                which means that \(|\vec{T}'(t)|=1\), so
+                \[
+                \kappa = \frac{|\vec{T}'(t)|}{|\vec{r}'(t)|} = \frac{1}{a}
+                \]
+        \end{example}
+        \begin{example}{}{}
+                Consider a helix parameterized by \(\vec{r}(t)=a\cos{t}\i+a\sin{t}\j+bt\k\). Find its curvature.
+                \tcblower
+                First, we find
+                \[
+                \vec{r}'(t)=-a\sin{t}\i+a\cos{t}\j+b\k
+                \]
+                so
+                \[
+                |\vec{r}'(t)|=\sqrt{a^2+b^2}
+                \]
+                which gives us
+                \[
+                \vec{T}(t)=\frac{1}{\sqrt{a^2+b^2}}\vec{r}'(t)
+                \]
+                and
+                \[
+                |\vec{T}'(t)|=\frac{1}{\sqrt{a^2+b^2}}\sqrt{a^2\cos^2{t}+a^2\sin^2{t}} = \frac{a}{\sqrt{a^2+b^2}}
+                \]
+                so the curvature is
+                \[
+                \kappa = \frac{\frac{a}{\sqrt{a^2+b^2}}}{\sqrt{a^2+b^2}} = \frac{a}{a^2+b^2}
+                \]
+                Note that in the limit as \(b\to\infty\) the curvature approaches that of a straight line, and in the limit as \(b\to 0\), the curvature approaches that of a circle.
+        \end{example}{}{}
+        This definition of curvature always works, but there is a formula for curvature which is often simpler to apply, namely
+        \[
+        \kappa = \frac{|\vec{r}'\times\vec{r}''|}{|\vec{r}'|^3}
+        \]
+        the proof of which is elided.
+        \begin{example}{}{}
+                Consider the curve parameterized by \(\vec{r}(t)=2t\i+t^2\j+\frac{t^3}{3}\j\). Find its curvature.
+                \tcblower
+                First, we find \(\vec{r}'(t)=2\i+2t\j+t^2\k\), so
+                \[
+                |\vec{r}'(t)|=\sqrt{4+4t^2+t^4}=\sqrt{(2t+t^2)^2}=2t+t^2
+                \]
+                We may then calculate \(\vec{r}''(t)=2\j+2t\k\), and \(\vec{r}'\times\vec{r}''=2(t^2\i-2t\j+2\k)\), which gives us
+                \[
+                |\vec{r}'\times\vec{r}''|=2\sqrt{t^4+4t^2+4}=2(2+t^2)
+                \]
+                Finally, we may calculate
+                \[
+                \kappa = \frac{2(2+t^2)}{(2+t^2)^3} = \frac{2}{(2+t^2)^2}
+                \]
+        \end{example}
+\end{document}

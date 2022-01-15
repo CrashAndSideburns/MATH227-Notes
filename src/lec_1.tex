@@ -1,0 +1,67 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+        \section{Vector-Valued Functions}
+        \begin{definition}{Vector-Valued Functions}{}
+                A vector valued function is a function \(\vec{r}:I \to \mathbb{R}^n\), where \(I \subseteq \mathbb{R}\). A vector valued function in \(\mathbb{R}^3\) may be written in the form
+                \[
+                \vec{r}(t)=x(t)\i + y(t)\j + z(t)\k
+                \]
+        \end{definition}
+        \begin{definition}{Continuity}{}
+                A vector valued function \(\vec{r}(t)=x(t)\i + y(t)\j + z(t)\k
+\) is \emph{continuous} on \(I\) if and only if \(x(t)\), \(y(t)\), and \(z(t)\) are all continuous on \(I\).
+        \end{definition}
+        \begin{definition}{Velocity \& Acceleration}{}
+                Given some vector valued function \(\vec{r}(t)\), there exists a corresponding \emph{velocity} \(\vec{v}(t)\) equal to \(\vec{r}'(t)\) and a corresponding \emph{acceleration} \(\vec{a}(t)\) equal to \(\vec{r}''(t)\), or equivalently \(\vec{v}'(t)\). The magnitude of \(\vec{v}(t)\) is a scalar quantity sometimes called the \emph{speed} of \(\vec{r}\).
+        \end{definition}
+        A stright line is described by the parameterization
+        \begin{equation*}
+                \vec{r}(t)=\vec{r}_0 + t\vec{v}
+        \end{equation*}
+        but may also be equivalently parameterized like
+        \begin{equation*}
+                \vec{r}(t)=\vec{r}_0 + 2t\vec{v}
+        \end{equation*}
+        which describes the same curve, but has a different velocity. Generally, the parameterization of a curve is not unique.
+        
+        A helix is descibed by the parameterization
+        \begin{equation*}
+                \vec{r}(t) = \cos{t}\i + \sin{t}\j + t\k
+        \end{equation*}
+        which corresponds to uniform circular motion in the x-y plane coupled with downward motion in the z direction with constant velocty, resulting in a curve with a helical shape. \(z(t)\) may be modified to change the ``compression" of the helix. For instance,
+        \begin{equation*}                        
+                \vec{r}(t) = \cos{t}\i + \sin{t}\j + t^3\k
+        \end{equation*}
+        is much less compressed at large values of \(z\), and highly compressed near \(0\).
+        \begin{example}{}{}
+        Parameterize the curve of intersection of \(x^2+y^2=9\) with \(z = x + y\).
+        \tcblower
+        In the x-y plane, the path is circular, so we have
+        \begin{align*}
+                x &= 3\cos{t}\\
+                y &= 3\sin{t}
+        \end{align*}
+        and due to the fact that the curve lies on the surface \(z = x + y\), it must be that
+        \[z = 3\cos{t} + 3\sin{t}\]
+        which is a parameterization on the interval \([0,2\pi]\).
+        \end{example}
+        \begin{example}{}{}
+        Parameterize the intersection of \(z = x^2 + y^2\) and \(x = 2y\).
+        \tcblower
+        The intersection of these curves is a parabola, so we may simply set
+        \[y=t\]
+        which then yields equations for \(x\) and \(z\)
+        \begin{align*}
+                x &= 2t\\
+                z &= 5t^2
+        \end{align*}
+        \end{example}
+        \begin{definition}{Differentiation Rules}{}
+                The differentiation of vector valued functions proceeds by differentiating each of the components, so the normal rules of differentiation apply, namely
+                \[(\vec{u}+\vec{v})' = \vec{u}' + \vec{v}'\]
+                \[(\vec{u}\cdot\vec{v})' = \vec{u}'\cdot\vec{v}+\vec{u}\cdot\vec{v}'\]
+                and similarly for the cross product
+                \[(\vec{u}\times\vec{v})' = \vec{u}'\times\vec{v}+\vec{u}\times\vec{v}'\]
+        \end{definition}
+\end{document}

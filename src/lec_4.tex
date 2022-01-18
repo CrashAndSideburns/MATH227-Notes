@@ -1,0 +1,101 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+        \section{Practice Problems}
+        \begin{example}{}{}
+                Consider the curve described by \(\vec{r}=\left(\frac{t^3}{3}-2t\right)\i + \left(\frac{t^3}{3}+2t\right)\j + \sqrt{2}t^2\k\) for \(t\in\mathbb{R}\). Find the arc length from \(t=0\) to \(t=1\).
+                \tcblower
+                First, we find that
+                \[
+                \vec{r}'(t)=\left(t^2+2\right)\i + \left(t^2+2\right)\j +2\sqrt{2}t\j
+                \]
+                so
+                \[
+                |\vec{r}'(t)|^2=\left(t^2+2\right)^2 + \left(t^2+2\right)^2 +(2\sqrt{2}t)^2 = 2\left(t^2+2\right)^2
+                \]
+                which gives us \(|\vec{r}'(t)|=\sqrt{2}(t^2+2)\), and thus the arc length is given by
+                \[
+                \int_0^1\sqrt{2}(t^2+2)\,dt = \frac{7\sqrt{2}}{3}
+                \]
+        \end{example}
+        \begin{example}{}{}
+                For the above curve, find the curvature at \(t=0\).
+                \tcblower
+                We previously found
+                \[
+                \vec{r}'(t)=\left(t^2+2\right)\i + \left(t^2+2\right)\j +2\sqrt{2}t\j
+                \]
+                so we may calculate
+                \[
+                \vec{r}''(t)=2t\i + 2t\j + 2\sqrt{2}\k
+                \]
+                The curvature at \(t=0\) is then given by
+                \[
+                \kappa = \frac{|\vec{r}'(0)\times\vec{r}''(0)|}{|\vec{r}'(0)|^3}
+                \]
+                so we may begin by calculating
+                \[
+                \vec{r}'(0)\times\vec{r}''(0)=4\sqrt{2}\i+4\sqrt{2}\j
+                \]
+                which has magnitude \(|\vec{r}'(0)\times\vec{r}''(0)|=8\). Finally, we calculate \(|\vec{r}'(0)|=2\sqrt{2}\), so we obtain the final solution
+                \[
+                \kappa = \frac{8}{\sqrt{8}^3}=\frac{1}{\sqrt{8}}
+                \]
+        \end{example}
+        \begin{example}{}{}
+                Verify that \(\frac{d}{dt}\vec{u}'(t)\times\vec{u}''(t)=\vec{u}'(t)\times\vec{u}'''(t)\).
+                \tcblower
+                By the derivative rule for the cross product, we have
+                \[
+                \frac{d}{dt}\vec{u}'(t)\times\vec{u}''(t)=\vec{u}''(t)\times\vec{u}''(t) + \vec{u}'(t)\times\vec{u}'''(t)
+                \]
+                but for any vector we always have \(\vec{v}\times\vec{v}=0\), so this simplifies to
+                \[
+                \frac{d}{dt}\vec{u}'(t)\times\vec{u}''(t)=\vec{u}'(t)\times\vec{u}(t)'''
+                \]
+        \end{example}
+        \begin{example}{}{}
+                Expand and simplify \(\frac{d}{dt}\left((\vec{u}\times\vec{u}')\cdot(\vec{u}'\times\vec{u}'')\right)\).
+                \tcblower
+                \begin{align*}
+                        \frac{d}{dt}\left((\vec{u}\times\vec{u}')\cdot(\vec{u}'\times\vec{u}'')\right)&=
+                        (\vec{u}\times\vec{u}')'\cdot(\vec{u}'\times\vec{u}'')+(\vec{u}\times\vec{u}')\cdot(\vec{u}'\times\vec{u}'')'\\
+                        &=(\vec{u}'\times\vec{u}'+\vec{u}\times\vec{u}'')\cdot(\vec{u}'\times\vec{u}'')\\
+                        &\quad+(\vec{u}\times\vec{u}')\cdot(\vec{u}''\times\vec{u}''+\vec{u}'\times\vec{u}''')\\
+                        &=(\vec{u}\times\vec{u}'')\cdot(\vec{u}'\times\vec{u}'')+(\vec{u}\times\vec{u}')\cdot(\vec{u}'\times\vec{u}''')
+                \end{align*}
+        \end{example}
+        \begin{example}{}{}
+                Consider a smooth vector valued function \(\vec{r}\) for which there exists a point \(P\) which lies on every normal plane to  \(\vec{r}\). Prove that the curve lies on a sphere.
+                \tcblower
+                First, note that we may take \(P=0\) without loss of generality, as any curve with such a point my be translated such that that \(P=0\) without changing the geometric properties of the curve.
+
+                The normal plane to the curve at \(\vec{r}(t_0)\) must be perpendicular to \(\vec{r}'(t_0)\), so we have
+                \[
+                \vec{r}'(t)\cdot((x-x_0)\i+(y-y_0)\j+(z-z_0)\k)=0
+                \]
+                but since \(P=0\) must always satisfy the above, it must be that 
+                \[
+                \vec{r}'(t)\cdot(-x_0\i+-y_0\j+-z_0\k)=\vec{r}'(t)\cdot(-\vec{r}(t))=0
+                \]
+                which we have previously shown requires that \(\vec{r}\) lies on the surface of a sphere.
+        \end{example}
+        \begin{example}{}{}
+                Consider the parabola described by \(\vec{r}(t)=t\i+\frac{t^2}{2]\j}\), with unit tangent vector \(\vec{T}(t)\). Find a parameterization \(\vec{r}(u)\) such that \(|\frac{d\vec{T}}{du}|=1\).
+                \tcblower
+                First, we find that \(\vec{r}'(t)=\i+t\j\), so \(|\vec{r}'(t)|=\sqrt{1+t^2}\) and
+                \[
+                \vec{T}(t)=\frac{1}{\sqrt{1+t^2}}(\i+t\j)
+                \]
+
+                The solution may then be completed by noting that since we require that
+                \[
+                \left|\frac{d\vec{T}}{du}\right|=1
+                \]
+                it must be that
+                \[
+                \frac{du}{dt}=|\vec{T}'(t)|
+                \]
+                which may be integrated to find an expression for \(u\). This process is elided for brevity.
+        \end{example}
+\end{document}

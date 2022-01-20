@@ -1,0 +1,84 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+        \section{Geometric Features of Curves}
+        We have previously examined curvature, but curves have other geometric properties which may be of interest, so we wish to look at those and define them mathematically. One of these is the principal normal, which is always perpendicual to the tangent vector. The principal normal describes the rate of change of the tangent vector. Another is osculating planes and circles, where we use planes and circles to approximate curves, rather than linear  line segments.
+        \begin{definition}{Principal Normal Vector}{}
+                Consider a curve parameterized by \(\vec{r}(t)\) on some interval. There exists a vector \(\vec{N}\) of unit length called the \emph{principal normal  vector} which is always perpendicular to \(\vec{T}\), and describes the direction in which \(\vec{T}\) is moving.
+
+                In the arc length parameterization, we have
+                \[
+                \vec{T}=\frac{d\vec{r}}{ds}
+                \]
+                then if \(\kappa\neq0\), we define
+                \[
+                \vec{N}(s)=\frac{\vec{T}'(s)}{|\vec{T}'(s)|}
+                \]
+                which is of unit length and points in the direction in which \(\vec{T}\) is curving. There is also an expression for \(\vec{N}\) in terms of an arbitrary parameterization, using that
+                \[
+                \frac{d\vec{T}}{ds}=\frac{d\vec{T}}{dt}\frac{dt}{ds}
+                \]
+                we have
+                \[
+                \vec{N}(t)=\frac{\vec{T}'(t)}{|\vec{T}'(t)|}
+                \]
+                so the formula is independent of parameterization.
+        \end{definition}
+        \begin{theorem}{}{}
+                Prove that \(\vec{N}\perp\vec{T}\).
+                \tcblower
+                Since \(|\vec{T}|=1\), we have \(\vec{T}\cdot\vec{T}'=0\), but since \(\vec{N}\) is a scalar multiple of \(\vec{T}'\), it must be that \(\vec{N}\cdot\vec{T}=0\) and \(\vec{N}\perp\vec{T}\).
+        \end{theorem}
+        \begin{definition}{The Osculating Plane}{}
+                Consider a curve described by \(\vec{r}(t)\) on some interval. We define the \emph{osculating plane} at a point \(P\) on the curve as the plane through \(P\) which is spanned by \(\vec{N}\) and \(\vec{T}\).
+        \end{definition}
+        \begin{definition}{The Osculating Circle}{}
+                Consider a curve described by \(\vec{r}(t)\) on some interval. We define the \emph{osculating circle} at a point \(P\) on the curve to be a circle which lies in the osculating plane, having a radius of \(\rho=\frac{1}{\kappa}\), and a centre at \(P+\rho\vec{N}\).
+        \end{definition}
+        The osculating circle represents a best circular approximation of the curve at a given point. Note that a circle of radius \(a\) has curvature \(\kappa=\frac{1}{a}\), so the osculating circle has the same curvature as the curve it approximates.
+        \begin{example}{}{}
+                Consider the circle parameterized by \(\vec{r}(t)=a\cos{t}\i+a\sin{t}\j\) in \(\mathbb{R}^3\). Find an expression for the osculating  circle.
+                \tcblower
+                It has previously been found that
+                \[
+                \vec{T}(t)=-\sin{t}\vec{i}+\cos{t}\j
+                \]
+                and therefore
+                \[
+                \vec{T}'(t)=-\cos{t}\vec{i}-\sin{t}\j
+                \]
+                but since \(|\vec{T}'|=1\), we have
+                \[
+                \vec{N}(t)=\vec{T}'(t)
+                \]
+
+                The curvature of this circle is \(\kappa=\frac{1}{a}\), and therefore the radius of the osculating circle is \(a\), identical to that o f the original circle. The centre of the osculating circle is at \(\vec{r}-a\vec{N}=\vec{0}\), so the osculating circle is precisely equal to the original circle.
+        \end{example}
+        \begin{example}{}{}
+                Consider the helix parameterized by \(\vec{r}=a\cos{t}\i+a\sin{t}\j+bt\k\). Find an expression for the osculating circle.
+                \tcblower
+                We have previously found that
+                \[
+                \vec{T}'(t)=\frac{1}{\sqrt{a^2+b^2}}\left(-a\cos{t}\i-a\sin{t}\j\right)
+                \]
+                and
+                \[
+                |\vec{T}'(t)|=\frac{a}{\sqrt{a^2+b^2}}
+                \]
+                but this yields
+                \[
+                \vec{N}=-\cos{t}\i-\sin{t}\j
+                \]
+                which gives the same osculating circle as that of the circle in the previous example, appropriately offset in the z-axis.
+        \end{example}
+        \begin{example}{}{}
+                Find an expression for the osculating plane of the helix from the previous example. 
+                \tcblower
+                We require our osculating plane be spanned by \(\vec{N}\) and \(\vec{T}\), so the plane's normal vector must be
+                \[
+                \vec{B}=\vec{T}\times\vec{N}
+                \]
+                where \(\vec{B}\) is known as the \emph{binormal vector}.
+                An expression describing the plane may then be obtained using the usual method.
+        \end{example}
+\end{document}

@@ -1,0 +1,145 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+        \section{Velocity, Acceleration, \& Frenet Frames}
+        In previous lectures, we have introduced vectors \(\vec{T}\), \(\vec{N}\), and \(\vec{B}\) which are related to parameterized curves. We have also considered \(\vec{v}\) and \(\vec{a}\), which describe the velocity and acceleration of parameterized curves. We wish to find formulas relating these vectors. We also wish to find formulas for \(\vec{N}\) and \(\vec{B}\) which do not depend on arc length parameterization.
+
+        We begin be considering the components of the acceleration vector \(\vec{a}(t)\). In particular, we wish to consider the components of the acceleration vector \emph{in the Frenet frame}, whose basis is \(\{\vec{T},\vec{N},\vec{B}\}\). In order to express \(\vec{a}\) in the Frenet frame, it is helpful to write
+        \[
+        \vec{v}=\vec{r}'(t)=|\vec{r}'|\vec{T}=v\vec{T}
+        \]
+        and
+        \[
+        \vec{a}=\vec{v}'(t)=\frac{d}{dt}v\vec{T}=\frac{dv}{dt}\vec{T}+v\frac{d\vec{T}}{dt}
+        \]
+        but we may use the definition of \(\vec{N}\) to express this as
+        \[
+        \vec{a}=\frac{dv}{dt}\vec{T}+v|\vec{T}'(t)|\vec{N}
+        \]
+        which may yet again be simplified using the definition of \(\kappa\) to yield
+        \[
+        \vec{a}=\frac{dv}{dt}\vec{T}+v^2\kappa\vec{N}
+        \]
+        which describes \(\vec{a}\) in the Frenet frame. Note that it has two main ``parts": there is the tangential component \(v'\vec{T}\), which describes the change in velocity parallel to the curve, and the normal component \(v^2\kappa\vec{N}\), which describes the change in direction of the curve, and is always directed towards the centre of curvature. Note that there is no \(\vec{B}\) component, so the acceleration vector is always parallel to the osculating plane.
+
+        We also wish to consider another method of computing \(\vec{B}\) and \(\vec{N}\) which does not depend on finding the arc length parameterization. We already have
+        \[
+        \vec{a}=v'\vec{T}+v^2\kappa\vec{N}
+        \]
+        so we consider \(\vec{v}\times\vec{a}\). Since \(\vec{v}=v\vec{T}\), we have
+        \[
+        \vec{v}\times\vec{a}=v\vec{T}\times(v'\vec{T}+v^2\kappa\vec{N})=v^3\kappa\vec{B}
+        \]
+        which recovers a previously obtained formula for curvature, since if we take the absolute value of \(\vec{v}\times\vec{a}\), we obtain
+        \[
+        |\vec{v}\times\vec{a}|=|v^3\kappa\vec{B}|=v^3\kappa
+        \]
+        which yields
+        \[
+        \kappa=\frac{|\vec{v}\times\vec{a}|}{v^3}
+        \]
+        The same expression may also be used to obtain an expression for \(\vec{B}\), namely
+        \[
+        \vec{B}=\frac{\vec{v}\times\vec{a}}{v^3\kappa}=\frac{\vec{v}\times\vec{a}}{|\vec{v}\times\vec{a}|}
+        \]
+        which yields an expression for \(\vec{B}\) which is independent of parameterization. Since we already have an expression for \(\vec{T}\) which is independent of parameterization, we may obtain one for \(\vec{N}\) using the cross product.
+
+        There is also another method for computing the components of the acceleration vector. Since
+        \[
+        \vec{a}=a_T\vec{T}+a_N\vec{N}
+        \]
+        we may find the components of \(\vec{a}\) by considering the projections of \(\vec{v}\) on \(\vec{T}\) and \(\vec{N}\), or formally
+        \[
+        a_T=\vec{a}\cdot\vec{T}=\frac{\vec{a}\cdot\vec{v}}{|\vec{v}|}
+        \]
+        and
+        \[
+        a_N=\vec{a}\cdot\vec{N}=\sqrt{a^2-a_T^2}
+        \]
+
+        \begin{example}{}{}
+                Find \(\vec{T}\), \(\vec{N}\), \(\vec{B}\), and \(\kappa\) for the curve parameterized by \(\vec{r}=2t\i+t^2\j+\frac{t^3}{3}\k\).
+                \tcblower
+                We have
+                \[
+                \vec{v}=2\i+2t\j+t^2\k
+                \]
+                and as a result
+                \[
+                v=t^2+2
+                \]
+
+                We also have
+                \[
+                \vec{a}=2\j+2t\k
+                \]
+                using which we may compute
+                \[
+                \vec{v}\times\vec{a}=2t^2\i-4t\j+4\k
+                \]
+                and
+                \[
+                |\vec{v}\times\vec{a}|=2(t^2+2)
+                \]
+                
+                Using these, we may compute the desired quantities. First,
+                \[
+                \kappa=\frac{|\vec{v}\times\vec{a}|}{v^3}=\frac{2(t^2+2)}{(t^2+2)^3}=\frac{2}{(t^2+2)^2}
+                \]
+                then
+                \[
+                \vec{T}=\frac{1}{t^2+2}(2\i+2t\j+t^2\k)
+                \]
+                as well as
+                \[
+                \vec{B}=\frac{\vec{v}\times\vec{a}}{|\vec{v}\times\vec{a}|}=\frac{1}{t^2+2}(t^2\i-2t\j+2\k)
+                \]
+                and finally
+                \[
+                \vec{N}=\vec{B}\times\vec{T}
+                \]
+                which is algebraically messy, and therefore the closed form is elided.
+        \end{example}
+        \begin{example}{}{}
+                Consider the curve parameterized by \(\vec{r}=\cos{t}\i+t\j+t^2\k\). Find \(\kappa\), \(\vec{T}\), \(\vec{N}\), and \(\vec{B}\) at \(t=0\).
+                \tcblower
+                We have
+                \[
+                \vec{v}(0)=-\sin{0}\i+\j+2(0)\k=\j
+                \]
+                and as a result
+                \[
+                v=1
+                \]
+
+                We also have
+                \[
+                \vec{a}(0)=-\cos{t}\i+2\k
+                \]
+                using which we may compute
+                \[
+                \vec{v}\times\vec{a}=2\i+\k
+                \]
+                and
+                \[
+                |\vec{v}\times\vec{a}|=\sqrt{5}
+                \]
+
+                Using these, we may compute the desired quantities. First,
+                \[
+                \kappa=\frac{|\vec{v}\times\vec{a}|}{v^3}=\sqrt{5}
+                \]
+                then
+                \[
+                \vec{T}=\frac{\vec{v}}{v}=\j
+                \]
+                as well as
+                \[
+                \vec{B}=\frac{\vec{v}\times\vec{a}}{|\vec{v}\times\vec{a}|}=\frac{1}{\sqrt{5}}(2\i+\k)
+                \]
+                and finally
+                \[
+                \vec{N}=\vec{B}\times\vec{T}=\frac{1}{\sqrt{5}}(-\i+2\k)
+                \]
+        \end{example}
+\end{document}

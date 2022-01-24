@@ -1,0 +1,98 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+        \section{Torsion \& The Frenet-Serret Formulas}
+                We have previously defined some properties of curves, and some associated vectors, namely the unit tangent vector \(\vec{T}\), the curvature \(\kappa\), the principal normal vector \(\vec{N}\), and the binormal vector \(\vec{B}\). We have also defined the osculating planes and circles associated with curves, which function as approximations to curves different from the typical linear ones. Another property which we may wish to consider is torsion, which encodes the rate of change of the binormal vector.
+                \begin{definition}{Torsion}{}
+                        Consider
+                        \[
+                        \frac{d\vec{B}}{ds}
+                        \]
+                        which is the rate of change of the binormal per unit length. This vector is perpendicular to both \(\vec{B}\) and \(\vec{T}\). The fact that it is perpendicular to \(\vec{B}\) follows from the fact that the derivative of a vector of constant magnitude (\(\vec{B}\) having constant unit magnitude) is always perpendicular to that vector. For \(\vec{T}\), the relevant fact is that
+                        \[
+                        \frac{d\vec{B}}{ds}=\frac{d\vec{T}}{ds}\times\vec{N}+\vec{T}\times\frac{d\vec{N}}{ds}
+                        \]
+                        but
+                        \[
+                        \frac{d\vec{T}}{ds}=\kappa\vec{N}
+                        \]
+                        so the first term is zero, and thus
+                        \[
+                        \frac{d\vec{B}}{ds}=\vec{T}\times\frac{d\vec{N}}{ds}
+                        \]
+                        and therefore \(\vec{B}\) must be perpendicular to \(\vec{T}\), and we have
+                        \[
+                        \frac{d\vec{B}}{ds}=-\tau\vec{N}
+                        \]
+                        where \(\tau\) is defined to be the \emph{torsion} of the curve.
+                \end{definition}
+                \begin{example}{}{}
+                        Consider the helix parameterized by \(\vec{r}=a\cos{t}\i+a\sin{t}\j+bt\k\). Find the binormal vector and the torsion.
+                        \tcblower
+                        We already know
+                        \[
+                        v(t)=\sqrt{a^2+b^2}=\frac{ds}{dt}
+                        \]
+                        \[
+                        \vec{T}=\frac{1}{\sqrt{a^2+b^2}}(-a\sin{t}\i+a\cos{t}\j+b\k)
+                        \]
+                        \[
+                        \vec{N}=-\cos{t}\i-\sin{t}\j
+                        \]
+                        \[
+                        \kappa=\frac{a}{a^2+b^2}
+                        \]
+                        so to find \(\vec{B}\), we must simply compute \(\vec{T}\times\vec{N}\), which yields
+                        \[
+                        \vec{B}=\frac{1}{\sqrt{a^2+b^2}}(b\sin{t}\i-b\cos{t}\j+a\k)
+                        \]
+                        the torsion is then obtained by differentiating \(\vec{B}\) in \(s\). This may be done using the chain rule, noting that
+                        \[
+                        \frac{d\vec{B}}{dt}=\frac{1}{\sqrt{a^2+b^2}}(b\cos{t}\i+b\sin{t}\j)
+                        \]
+                        and using the previously calculated value for \(\frac{ds}{dt}\) we obtain
+                        \[
+                        \frac{d\vec{B}}{ds}=-\frac{b}{a^2+b^2}(-\cos{t}\i-\sin{t}\j)=-\frac{b}{a^2+b^2}\vec{N}
+                        \]
+                        and therefore we have
+                        \[
+                        \tau=\frac{b}{a^2+b^2}
+                        \]
+                \end{example}
+                It may be noted that the helix has constant curvature and torsion. As such, the helix is among the simplest 3D curves, having curvature and torsion which are constant, but non-zero.
+                \begin{definition}{Frenet-Serret Formulas}{}
+                        The \emph{Frenet-Serret formulas} define the derivatives of \(\vec{T}\), \(\vec{B}\), and \(\vec{N}\). We have previously found
+                        \begin{align*}
+                                \frac{d\vec{T}}{ds}&=\kappa\vec{N}\\
+                                \frac{d\vec{B}}{ds}&=-\tau\vec{N}
+                        \end{align*}
+                        but we require a formula for the derivative of \(\vec{N}\). We know that \(\vec{B}=\vec{T}\times\vec{N}\), but this implies \(\vec{N}=\vec{B}\times\vec{T}\), and therefore
+                        \begin{align*}
+                                \frac{d\vec{N}}{ds}&=\frac{d}{ds}\vec{B}\times\vec{T}\\
+                                                   &=\frac{d\vec{B}}{ds}\times\vec{T}+\vec{B}\times\frac{d\vec{T}}{ds}\\
+                                                   &=-\tau\vec{N}\times\vec{T}+\vec{B}\times\kappa\vec{N}\\
+                                                   &=\tau(\vec{T}\times\vec{N})-\kappa(\vec{N}\times\vec{B})\\
+                                                   &=\tau\vec{B}-\kappa\vec{T}
+                        \end{align*}
+
+                        This completes the Frenet-Serret formulas, which may also be written in a matrix form as
+                        \[
+                        \frac{d}{ds}
+                        \begin{bmatrix}
+                                \vec{T}\\
+                                \vec{N}\\
+                                \vec{B}
+                        \end{bmatrix}=
+                        \begin{bmatrix}
+                                0&\kappa&0\\
+                                -\kappa&0&\tau\\
+                                0&-\tau&0
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                                \vec{T}\\
+                                \vec{N}\\
+                                \vec{B}
+                        \end{bmatrix}
+                        \]
+                \end{definition}
+\end{document}
